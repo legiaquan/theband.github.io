@@ -1,0 +1,21 @@
+1. Header (đầu trang)
+2. Navigation (Điều hướng trang)
+3. Breadcrumbs
+4. Sidebar
+5. Silder
+6. Banner
+7. Content
+8. Footer
+---The band
+Phân tích -> ok
+    1. Header (đầu trang)
+    2. Silder
+    3. Content
+        1. About
+        2. Tour
+        3. Contact
+        4. Image
+    4. Footer
+2. Dựng base
+3. Build từng phần
+4. Hoàn hiện
