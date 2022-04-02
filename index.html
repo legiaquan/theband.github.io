@@ -18,7 +18,7 @@
                 <li><a href="#band">Band</a></li>
                 <li><a href="#tour">Tour</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#">More <i class="nav-arrow-down ti-angle-down"></i></a>
+                <li><a>More <i class="nav-arrow-down ti-angle-down"></i></a>
                     <ul class="subnav">
                         <li><a href="#">Merchandise</a></li>
                         <li><a href="#">Extras</a></li>
@@ -27,6 +27,12 @@
                 </li>
             </ul>
             <!-- End: Nav -->
+
+            <!-- Begin: Mobile button menu -->
+            <div class="mobile-menu">
+                <i class="search-icon ti-menu"></i>
+            </div>
+            <!-- Begin: Mobile button menu -->
 
             <!-- Begin: Search button -->
             <div class="search-button">
@@ -77,31 +83,31 @@
 
                     <!-- Place -->
                     <div class="row places-list">
-                        <div class="col col-third">
+                        <div class="places-list-item col col-third">
                             <img class="place-image" src="./assets/img/place/place1.jpg" alt="New York">
                             <div class="place-body">
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy Tickets</a>
+                                <a class="btn">Buy Tickets</a>
                             </div>
                         </div>
-                        <div class="col col-third">
+                        <div class="places-list-item col col-third">
                             <img class="place-image" src="./assets/img/place/place2.jpg" alt="New York">
                             <div class="place-body">
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy Tickets</a>
+                                <a class="btn">Buy Tickets</a>
                             </div>
                         </div>
-                        <div class="col col-third">
+                        <div class="places-list-item col col-third">
                             <img class="place-image" src="./assets/img/place/place3.jpg" alt="New York">
                             <div class="place-body">
                                 <h3 class="place-heading">New York</h3>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn">Buy Tickets</a>
+                                <a class="btn">Buy Tickets</a>
                             </div>
                         </div>
                     </div>
@@ -112,12 +118,12 @@
                 <h2 class="section-heading">Contact</h2>
                 <p class="section-sub-heading">Fan? Drop a note!</p>
                 <div class="row contact-content contact-info">
-                    <div class="col col-half">
+                    <div class="contact-item col col-half">
                         <p><i class="ti-location-pin"></i>Chicago, US</p>
-                        <p><i class="ti-mobile"></i>Phone: +00 151515</p>
-                        <p><i class="ti-email"></i>Email: mail@mail.com</p>
+                        <p><i class="ti-mobile"></i>Phone: <a href="tel:00151515">+00 151515</a></p>
+                        <p><i class="ti-email"></i>Email: <a href="mailto:mail@mail.com">mail@mail.com</a></p>
                     </div>
-                    <div class="col col-half contact-form">
+                    <div class="contact-item col col-half contact-form">
                         <form>
                             <div class="row">
                                 <div class="col col-half">
@@ -154,6 +160,89 @@
             </div>
             <div class="copyright">Powered by <a href="">w3.css</a></div>
         </div>
+        <div class="modal" id="modal">
+            <div class="modal-content">
+                <div class="modal-close">
+                    <i class="ti-close"></i>
+                </div>
+                <div class="modal-header">
+                    <i class="ti-bag modal-heading-icon"></i>
+                    Tickets
+                </div>
+                <div class="modal-body">
+                    <label for="ticket-quality" class="modal-label">
+                        <i class="ti-shopping-cart"></i>
+                        Tickets, $15 per person
+                    </label>
+                    <input id="ticket-quality" type="text" class="modal-input" placeholder="How many?" />
+                    <label for="ticket-email" class="modal-label">
+                        <i class="ti-user"></i>
+                        Send to:
+                    </label>
+                    <input id="ticket-email" type="text" class="modal-input" placeholder="Email" />
+
+                    <button class="buy-ticket">
+                        Pay
+                        <i class="ti-check"></i>
+                    </button>
+                </div>
+                <div class="modal-footer">
+                    <p class="modal-help">Need <a href="#">help?</a></p>
+                </div>
+            </div>
+        </div>
     </div>
+    <script>
+        const btnMobileMenu = document.querySelector("#header .mobile-menu");
+        const header = document.querySelector("#header");
+        // Show menu
+        let isShow = false;
+        const showMenu = () => {
+            if(isShow) { // open
+                header.style.height = "46px"
+            } else {
+                header.style.height = "auto"
+            }
+            isShow = !isShow;
+        };
+        btnMobileMenu.addEventListener("click", showMenu);
+
+        const itemMenus = document.querySelectorAll("#nav li");
+        Array.from(itemMenus).map((item) => {
+            item.addEventListener("click", function() {
+                let hasSubNav = this.querySelector('.subnav');
+                if(!hasSubNav) {
+                    header.style.height = "46px";
+                    isShow = false;
+                }
+            });
+        })
+        
+        // modal
+        const btnBuyTickets = document.querySelectorAll(".places-list .places-list-item .btn");
+        const modalTicket = document.querySelector("#modal");
+        const btnModalClose = document.querySelector(".modal-close");
+        const modal = document.querySelector("#modal");
+        const modalContent = document.querySelector("#modal .modal-content");
+
+        //open modal
+        const openModal = () => {
+            modalTicket.classList.add("modal-open");
+        }
+        Array.from(btnBuyTickets).map((item) => {
+            item.addEventListener("click", openModal);
+        })
+
+        //close modal
+        const closeModal = () => {
+            modalTicket.classList.remove("modal-open");
+        }
+        btnModalClose.addEventListener("click", closeModal);
+
+        modal.addEventListener("click",closeModal)
+        modalContent.addEventListener("click", function(event) {
+            event.stopPropagation();
+        })
+    </script>
 </body>
 </html>

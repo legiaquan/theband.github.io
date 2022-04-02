@@ -116,6 +116,7 @@ html{
 #header .nav-arrow-down{
     font-size: 12px;
 }
+#header .mobile-menu,
 #header .search-button{
     float: right;
     padding: 0 24px;
@@ -123,6 +124,15 @@ html{
 #header .search-button:hover{
     background-color: tomato;
     cursor: pointer;
+}
+#header .mobile-menu{
+    display:none;
+}
+#header .mobile-menu:hover {
+    background-color: #ccc;
+}
+#header .mobile-menu:hover .search-icon{
+    color: #000;
 }
 #header .search-icon{
     color:#fff;
@@ -155,6 +165,7 @@ html{
 }
 #content .content-section{
    width: 800px;
+   max-width: 100%;
    padding: 64px 0;
    margin-left: auto;
    margin-right: auto;
@@ -329,4 +340,198 @@ html{
 #footer .copyright a{
     color: rgba(0,0,0,0.6);
     /* text-decoration: none; */
+}
+
+#modal.modal-open {
+    display: flex;
+}
+
+#modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.4);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+#modal .modal-content {
+    background: #fff;
+    width: 900px;
+    max-width: calc(100% - 32px);
+    min-height: 200px;
+    position: relative;
+    animation: modalFadeIn ease 0.5s;
+}
+
+#modal .modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #fff;
+    padding: 12px;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#modal .modal-close:hover {
+    opacity: 0.5;
+}
+
+#modal .modal-header {
+    background-color: #009688;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #fff;
+}
+
+#modal .modal-header .modal-heading-icon {
+    margin-right: 16px;
+}
+
+#modal .modal-body {
+    padding: 16px;
+}
+
+#modal .modal-body .modal-label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+#modal .modal-body .modal-input {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: 8px;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+#modal .modal-body .buy-ticket:hover {
+    opacity: 0.9;
+}
+#modal .modal-body .buy-ticket {
+    width: 100%;
+    padding: 12px;
+    background-color: #009688;
+    color: #fff;
+    font-size: 15px;
+    text-transform: uppercase;
+    border: 0;
+    cursor: pointer;
+}
+
+.modal-footer {
+    text-align: right;
+    padding: 16px;
+}
+
+.modal-footer a {
+    color: blue;
+}
+
+/* Table >= 740px & <1024px */
+@media (min-width: 740px) and (max-width: 1023px) {
+    #content .content-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
+
+/* Mobile <740px */
+@media (max-width: 740px){
+    #header {
+        overflow: hidden;
+    }
+
+    #header .mobile-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    #header .search-button {
+        display: none;
+    }
+
+    #nav {
+        display: block;
+        position: relative;
+    }
+    
+    #nav > li {
+        display: block;
+        background-color: rgba(0,0,0,255);
+    }
+    
+    #nav li:first-child {
+        display: inline-block;
+    }
+
+    #nav li:first-child:hover {
+        background-color: rgba(0,0,0,255);
+    }
+
+    #nav li:last-child:hover a {
+        color: #000;
+    }
+
+    #nav li:last-child:hover .subnav li {
+        background-color: grey;
+        display: block;
+        padding-left: 30px;
+    }
+
+    #nav .subnav {
+        position: initial;
+    }
+    
+    #content .content-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .places-list .places-list-item,
+    #content .member-item {
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .places-list .places-list-item:first-child {
+        margin-top: 0;
+    }
+
+    .places-list .places-list-item .place-body .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .contact-info .contact-item {
+        width: 100%;
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .contact-info .btn {
+        float: initial;
+        width: 100%;
+    }
+}
+
+@keyframes modalFadeIn {
+    from {
+        transform: translateY(-140px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
