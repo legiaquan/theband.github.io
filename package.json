@@ -1,0 +1,23 @@
+{
+  "name": "theband.github.io",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/quanle51297/theband.github.io/edit/main/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quanle51297/theband.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quanle51297/theband.github.io/issues"
+  },
+  "homepage": "https://github.com/quanle51297/theband.github.io#readme",
+  "dependencies": {
+    "json-server": "^0.17.0"
+  }
+}
